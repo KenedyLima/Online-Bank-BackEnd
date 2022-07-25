@@ -12,8 +12,7 @@ public class PrintService {
 		return service;
 	}
 	
-	public void print() {
-		
+	public void print(int i) {
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.digitalbank.entities;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 
 public interface IAccount {
@@ -13,7 +14,7 @@ public interface IAccount {
 	
 	void extract();
 	
-	List<Operation> getOperations();
+	HashMap<String, List<Operation>> getOperations();
 	
 	BigDecimal getBalance();
 }

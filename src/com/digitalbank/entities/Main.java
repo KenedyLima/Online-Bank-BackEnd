@@ -26,6 +26,7 @@ public class Main {
 		savingAccount2.extract();
 		
 		System.out.println(savingAccount2.getOperations().toString());
+		System.out.println(savingAccount.getOperations().toString());
 	}
 
 }

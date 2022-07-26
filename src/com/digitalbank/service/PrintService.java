@@ -1,5 +1,8 @@
 package com.digitalbank.service;
 
+import java.io.File;
+import java.time.Month;
+
 public class PrintService {
 
 	PrintService service = new PrintService();
@@ -12,7 +15,11 @@ public class PrintService {
 		return service;
 	}
 	
-	public void print(int i) {
+	public void print(Month month) {
+
+		
 	}
+	
+
 	
 }

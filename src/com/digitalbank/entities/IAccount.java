@@ -6,15 +6,17 @@ import java.util.List;
 
 public interface IAccount {
 
-	void deposit(BigDecimal value);
+	void deposit(BigDecimal amount);
 	
-	void withdraw(BigDecimal value);
+	void withdraw(BigDecimal amount);
 	
-	void transfer(BigDecimal value, IAccount account) throws Exception;
+	void transfer(BigDecimal amount, IAccount account) throws Exception;
 	
 	void extract();
 	
 	HashMap<String, List<Operation>> getOperations();
 	
 	BigDecimal getBalance();
+	
+	Client getClient();
 }

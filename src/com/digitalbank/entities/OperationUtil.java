@@ -10,8 +10,6 @@ public class OperationUtil {
 		
 	}
 	
-	
-	
 	public static boolean isKeyYearMonthPresent(HashMap<String, List<Operation>> operations, LocalDateTime date) {
 		String key = getYearMonthKey(date);
 		return operations.get(key) == null ? false : true;		

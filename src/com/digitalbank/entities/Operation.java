@@ -2,29 +2,31 @@ package com.digitalbank.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class Operation {
 
 	private OperationType operationType;
-	private BigDecimal value;
+	private BigDecimal amount;
 	private LocalDateTime date;
 	private IAccount sender = null;
 	private IAccount receiver = null;
 	
 	
-	private Operation(OperationType operationType, BigDecimal value) {
+	private Operation(OperationType operationType, BigDecimal amount) {
 		date = LocalDateTime.now();	
 		this.operationType = operationType;
-		this.value = value;
+		this.amount = amount;
 	}
 	
-	private Operation(OperationType operationType, BigDecimal value, IAccount sender) {
-		this(operationType, value);
+	private Operation(OperationType operationType, BigDecimal amount, IAccount sender) {
+		this(operationType, amount);
 		this.sender = sender;
 	}
 	
-	private Operation(OperationType operationType, BigDecimal value, IAccount sender, IAccount receiver) {
-		this(operationType, value, sender);
+	private Operation(OperationType operationType, BigDecimal amount, IAccount sender, IAccount receiver) {
+		this(operationType, amount, sender);
 		this.receiver = receiver;
 	}
 	
@@ -32,8 +34,8 @@ public class Operation {
 		return operationType;
 	}
 
-	public BigDecimal getValue() {
-		return value;
+	public BigDecimal getamount() {
+		return amount;
 	}
 
 	public LocalDateTime getDate() {
@@ -48,24 +50,28 @@ public class Operation {
 		return receiver;
 	}
 
-	protected static Operation generate(OperationType operationType, BigDecimal value) {
-		return new Operation(operationType, value);
+	protected static Operation generate(OperationType operationType, BigDecimal amount) {
+		return new Operation(operationType, amount);
 	}
 	
-	protected static Operation generate(OperationType operationType, BigDecimal value, IAccount sender) {
-		return new Operation(operationType, value, sender);
+	protected static Operation generate(OperationType operationType, BigDecimal amount, IAccount sender) {
+		return new Operation(operationType, amount, sender);
 	}
 	
-	protected static Operation generate(OperationType operationType, BigDecimal value, IAccount sender, IAccount receiver) {
-		return new Operation(operationType, value, sender, receiver);
+	protected static Operation generate(OperationType operationType, BigDecimal amount, IAccount sender, IAccount receiver) {
+		return new Operation(operationType, amount, sender, receiver);
 	}
 
 	@Override
 	public String toString() {
-		return "Operation [operationType=" + operationType + ", value=" + value + ", date=" + date + ", sender="
-				+ sender + ", receiver=" + receiver + "]";
-	}
-	
+		StringBuilder builder = new StringBuilder();
+		builder.append(date.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))).append("\n").append(operationType).append("\tamount: ").append(amount);;
+		if(operationType == OperationType.TRANSFERENCE) {
+			builder.append("\nFrom: ").append(sender.getClient().getName());
+			builder.append("\nTo: ").append(receiver.getClient().getName());
+		}
+		return builder.toString();	
+		}
 	
 	 
 }

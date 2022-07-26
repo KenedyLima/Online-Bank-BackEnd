@@ -9,24 +9,20 @@ public class Main {
 		Bank bank = new Bank();
 		
 		Client client = new Client("Kenedy", 0, null);
-		Client client2 = new Client("Kenedy", 0, null);
+		Client client2 = new Client("Jhon", 0, null);
 		
 		Account checkingAccount = new CheckingAccount(client);
 		Account savingAccount = new SavingAccount(client2);
-		Account savingAccount2 = new SavingAccount(client2);
-		
-		checkingAccount.deposit(new BigDecimal(100));
-		checkingAccount.extract();
-		savingAccount.extract();
-		checkingAccount.transfer(new BigDecimal(45), savingAccount);
-		checkingAccount.extract();
-		savingAccount.extract();
-		savingAccount.transfer(new BigDecimal(20), savingAccount2);;
-		savingAccount.extract();
-		savingAccount2.extract();
-		
-		System.out.println(savingAccount2.getOperations().toString());
+
+		checkingAccount.deposit(new BigDecimal(1000));
+		checkingAccount.transfer(new BigDecimal(500), savingAccount);
+		savingAccount.withdraw(new BigDecimal(500));
+		savingAccount.deposit(new BigDecimal(100));
+		System.out.println(checkingAccount.getOperations().toString());		
 		System.out.println(savingAccount.getOperations().toString());
+		checkingAccount.extract();
+		savingAccount.extract();
+		
 	}
 
 }

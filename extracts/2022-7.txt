@@ -1,0 +1,11 @@
+Date: 27 de jul. de 2022 22:23:02
+Operation: TRANSFERENCE			amount: 500
+From: 			Kenedy
+To: 			Jhon
+
+Date: 27 de jul. de 2022 22:23:02
+Operation: WITHDRAWAL			amount: 500
+
+Date: 27 de jul. de 2022 22:23:02
+Operation: DEPOSIT			amount: 100
+

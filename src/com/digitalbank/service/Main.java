@@ -1,12 +1,22 @@
-package com.digitalbank.entities;
+package com.digitalbank.service;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.Month;
+
+import com.digitalbank.entities.Account;
+import com.digitalbank.entities.Bank;
+import com.digitalbank.entities.CheckingAccount;
+import com.digitalbank.entities.Client;
+import com.digitalbank.entities.SavingAccount;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception {
 		
-		Bank bank = new Bank();
+		PrintService service = PrintService.getInstance();
+		
+	Bank bank = new Bank();
 		
 		Client client2 = new Client("Jhon", 0, null);
 		
@@ -18,11 +28,7 @@ public class Main {
 		checkingAccount.transfer(new BigDecimal(500), savingAccount);
 		savingAccount.withdraw(new BigDecimal(500));
 		savingAccount.deposit(new BigDecimal(100));
-		System.out.println(checkingAccount.getOperations().toString());		
-		System.out.println(savingAccount.getOperations().toString());
-		checkingAccount.extract();
-		savingAccount.extract();
-		
-	}
 
+		service.print(savingAccount.getOperations(), Month.JULY);
+	}
 }

@@ -62,13 +62,12 @@ public class Operation {
 		return new Operation(operationType, amount, sender, receiver);
 	}
 
-	@Override
-	public String toString() {
+	public String getInfo() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(date.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))).append("\n").append(operationType).append("\tamount: ").append(amount);;
+		builder.append("Date: ").append(date.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM))).append("\n").append("Operation: ").append(operationType).append("\t\t\tamount: ").append(amount);;
 		if(operationType == OperationType.TRANSFERENCE) {
-			builder.append("\nFrom: ").append(sender.getClient().getName());
-			builder.append("\nTo: ").append(receiver.getClient().getName());
+			builder.append("\nFrom: ").append("\t\t\t" + sender.getClient().getName());
+			builder.append("\nTo: ").append("\t\t\t" + receiver.getClient().getName());
 		}
 		return builder.toString();	
 		}

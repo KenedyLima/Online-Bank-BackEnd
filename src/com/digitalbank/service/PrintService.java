@@ -1,5 +1,7 @@
 package com.digitalbank.service;
 
+import static org.hamcrest.CoreMatchers.is;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -29,17 +31,25 @@ public class PrintService {
 		LocalDateTime date = LocalDateTime.of(currentDate.getYear(), month, currentDate.getDayOfMonth(), 0, 0);
 		String key = OperationUtil.getYearMonthKey(date);		
 		List<Operation> monthOperations = operations.get(key);
+		boolean isMonthOperationsNull = false;
+		if(monthOperations == null) isMonthOperationsNull = true;
+		
 		File file = new File("extracts\\" + key + ".txt");
-		write(monthOperations, file);
+		write(isMonthOperationsNull, monthOperations, file);
 		
 	}
 	
-	private void write(List<Operation> monthOperations, File file) throws IOException {
+	private void write(boolean isMonthOperationsNull, List<Operation> monthOperations, File file) throws IOException {
 		
 		OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file));
 		
-		for(Operation operation: monthOperations) 
-			writer.write(operation.getInfo() + "\n\n");
+		if(!isMonthOperationsNull) {			
+			for(Operation operation: monthOperations) 
+				writer.write(operation.getInfo() + "\n\n");
+		} else {
+			writer.write("No operation was performed yet!");
+		}
+		
 		
 		
 		writer.flush();

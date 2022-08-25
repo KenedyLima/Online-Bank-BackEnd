@@ -28,7 +28,7 @@ public class Main {
 		checkingAccount.transfer(new BigDecimal(500), savingAccount);
 		savingAccount.withdraw(new BigDecimal(500));
 		savingAccount.deposit(new BigDecimal(100));
-
-		service.print(savingAccount.getOperations(), Month.JULY);
+		System.out.println(savingAccount.getOperations().toString());
+		service.print(savingAccount.getOperations(), Month.NOVEMBER);
 	}
 }

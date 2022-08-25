@@ -1,0 +1,11 @@
+Date: 25 de ago. de 2022 04:20:38
+Operation: TRANSFERENCE			amount: 500
+From: 			Kenedy
+To: 			Jhon
+
+Date: 25 de ago. de 2022 04:20:38
+Operation: WITHDRAWAL			amount: 500
+
+Date: 25 de ago. de 2022 04:20:38
+Operation: DEPOSIT			amount: 100
+
